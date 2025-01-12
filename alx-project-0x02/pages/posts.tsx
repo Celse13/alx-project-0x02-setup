@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import PostCard from '@/components/common/PostCard';
-import { PostProps } from '@/interfaces';
+import React, { useEffect, useState } from "react";
+import PostCard from "@/components/common/PostCard";
+import { PostProps } from "@/interfaces";
+import Header from "@/components/layout/Header";
 
 export default function Posts() {
   const [posts, setPosts] = useState<PostProps[]>([]);
@@ -9,11 +10,13 @@ export default function Posts() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        const response = await fetch(
+          "https://jsonplaceholder.typicode.com/posts"
+        );
         const data = await response.json();
         setPosts(data);
       } catch (error) {
-        console.error('Error fetching posts:', error);
+        console.error("Error fetching posts:", error);
       } finally {
         setLoading(false);
       }
@@ -27,18 +30,21 @@ export default function Posts() {
   }
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Posts</h1>
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-        {posts.map((post) => (
-          <PostCard
-            key={post.id}
-            title={post.title}
-            content={post.content}
-            userId={post.userId}
-          />
-        ))}
+    <>
+      <Header />
+      <div className="p-6">
+        <h1 className="text-2xl font-bold mb-4">Posts</h1>
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {posts.map((post) => (
+            <PostCard
+              key={post.id}
+              title={post.title}
+              content={post.content}
+              userId={post.userId}
+            />
+          ))}
+        </div>
       </div>
-    </div>
+    </>
   );
 }
