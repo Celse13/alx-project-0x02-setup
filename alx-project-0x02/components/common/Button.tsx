@@ -1,4 +1,5 @@
-import { ButtonProps } from '@/interfaces';
+import React from "react";
+import { type ButtonProps } from '@/interfaces';
 
 const Button = ({ size, shape, children, onClick }: ButtonProps) => {
   const sizeClasses = {
