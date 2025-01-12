@@ -14,7 +14,12 @@ export default function PostModal({isOpen, onClose, onSubmit}: PostModalProps) {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        onSubmit({title, content})
+        onSubmit({
+          title,
+          body: content,
+          id: Date.now(),
+          userId: 1
+        });
         setTitle('');
         setContent('');
         onClose();

@@ -13,10 +13,10 @@ export interface CardProps {
   }
   
   export interface PostProps {
-    id?: number;
+    id: number;
     title: string;
-    content: string;
-    userId?: number;
+    body: string;
+    userId: number;
   }
   
   export interface UserProps {

@@ -30,7 +30,7 @@ export default function Home() {
 
         <div className="grid gap-4 md:grid-cols-2">
           {posts.map((post, index) => (
-            <Card key={index} title={post.title} content={post.content} />
+            <Card key={index} title={post.title} content={post.body} />
           ))}
         </div>
 
